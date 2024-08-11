@@ -46,6 +46,7 @@ fn main() {
                 format!("Start-Process -FilePath \"{}\" -WindowStyle Hidden", idea_bat).as_str()])
             .creation_flags(winapi::um::winbase::CREATE_NO_WINDOW)
             .env("SIREUM_HOME", sireum_home)
+            .env_remove("JAVA_HOME")
             .spawn();
         if output.is_err() {
             eprintln!("Could not launch {}", idea_bat);
